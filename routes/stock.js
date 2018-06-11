@@ -15,7 +15,7 @@ router.get('/get', function(req, res, next) {
 
 });
 
-/* POST single blog post */
+/* POST single stock  */
 router.post('/post', function(req, res, next) {
     var instance = new schema.Stock(req.body);
     /** Example post body:
@@ -30,7 +30,7 @@ router.post('/post', function(req, res, next) {
         if (err)
             return console.error(err);
         console.log("Loader success: ", stocks);
-        blogs.forEach(function(stock){
+        stocks.forEach(function(stock){
             console.log("Loader success: ", stock);
             schema.Stock.findByIdAndRemove(stock._id).exec();
         });
@@ -45,7 +45,7 @@ router.post('/post', function(req, res, next) {
 });
 
 
-/* Notify blog messages to connected clients */
+/* Notify stock prices to connected clients */
 router.clients = [];
 router.addClient = function (client) {
     router.clients.push(client);

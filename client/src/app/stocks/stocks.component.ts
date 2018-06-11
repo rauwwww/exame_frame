@@ -19,7 +19,7 @@ export class StocksComponent implements OnInit {
 
   constructor (private stockService: StockService) {}
 
-  submitStocks() {
+  submitStock() {
     this.stockService.addStock(this.model)
       .subscribe(
         stogMsg => {

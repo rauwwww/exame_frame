@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Stock } from '../models/stock';
-import { Observable } from 'rxjs/Observable';
+import { Observable }     from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import * as io from 'socket.io-client';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class StockService {
