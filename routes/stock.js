@@ -45,5 +45,24 @@ router.post('/post', function(req, res, next) {
 });
 
 
+/* Notify blog messages to connected clients */
+router.clients = [];
+router.addClient = function (client) {
+    router.clients.push(client);
+    router.notifyclients(client);
+};
+router.notifyclients = function (client) {
+    schema.Stock.find({}).exec(function (err, stocks) {
+        if (err)
+            return console.error(err);
+        //console.log("Load success: ", blogs);
+        var toNotify = client?new Array(client):router.clients;
+        toNotify.forEach(function(socket){
+            socket.emit('refresh', stocks);
+        })
+    });
+}
+
+
 
 module.exports = router;
