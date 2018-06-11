@@ -14,7 +14,8 @@ export class StocksComponent implements OnInit {
   title = 'MEAN app with Socket IO';
   //model = new Blog('', '');
   public stockName = [];
-  model = new Stock('', '');
+  stockPricemodel = new StockPrice('', '');
+  model = new Stock('', new Array<StockPrice>());
   public stockList = [];
 
   constructor (private stockService: StockService) {}

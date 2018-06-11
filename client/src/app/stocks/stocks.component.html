@@ -20,12 +20,45 @@
 
 <hr>
 
-<h2>All Stocks</h2>
-<ul>
-    <li *ngFor="let message of stockList">
-    {{ message.name }} 
-    </li>
-</ul>
+    <h2>All Stocks!</h2>
+
+    <div class="row">
+    <div class="panel panel-default col-sm-12"  *ngFor="let message of stockList">
+ 
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="li-header"> {{ message.name }} </h2>
+            </div>
+            <div class="col-sm-2 col-sm-offset-4" style="margin-top:25px">
+                <button class="btn  btn-block btn-info pull-right">Add stock</button>
+            </div>
+        </div>
+        <table class="table table-striped">
+                <thead>
+                        <tr>
+                          <th>Price</th>
+                          <th>Time</th>
+                        </tr>
+                </thead>
+                <tbody class="panel-body" *ngFor="let strockPrice of message.strockPrice"> 
+                        
+                        <tr *ngIf="strockPrice?.price">
+                            <td>{{strockPrice.price}} $</td>
+                            <td>{{strockPrice.data}}</td>
+                        </tr>      
+                        
+                        <tr *ngIf="strockPrice?.price.lenght < 0">
+                            <td>Nothing to see here</td></tr>
+
+                </tbody>
+        </table>
+ 
+   
+
+    
+           
+        </div>
+    </div>
 
 <app-stock><app-stock>
 

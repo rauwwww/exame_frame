@@ -7,6 +7,6 @@ export class StockPrice {
 export class Stock {
     constructor(
       public name: string,
-      public stockprices: string,
+      public stockprices: StockPrice[],
     ) { }
 }
