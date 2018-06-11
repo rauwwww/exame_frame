@@ -1,5 +1,32 @@
 
 <button type="button" class="btn btn-large btn-block btn-info">Add stock</button>
 
+<h2>Create new stock message</h2>
+<form (ngSubmit)="submitStocks()">
+    <div class="form-group">
+    <label for="name">StockName</label>
+    <input type="text"  class="form-control" id="name"
+            required
+            [(ngModel)]="model.name" name="name">
+    </div>
+   <!--<div class="form-group">
+    <label for="body">Body</label>
+    <input type="text" class="form-control" id="body"
+            required
+            [(ngModel)]="model.body" name="body">
+    </div> -->
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<hr>
+
+<h2>All blog messages</h2>
+<ul>
+    <li *ngFor="let message of stockList">
+    {{ message.name }} 
+    </li>
+</ul>
+
 <app-stock><app-stock>
-<app-stock><app-stock>
+
+
