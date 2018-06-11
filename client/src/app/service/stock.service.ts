@@ -18,6 +18,7 @@ export class StockService {
     getStocks (): Observable<Stock[]> {
         let observable = new Observable(observer => {
             console.log('Socket:', this.url);
+            this.socket = io(this.url);
             this.socket.on('refresh', (data) => {
                 observer.next(data);
             });
