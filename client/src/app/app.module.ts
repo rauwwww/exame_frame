@@ -14,8 +14,6 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 // Angular Routing
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-// jwt for Routeguards
-import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 const appRoutes: Routes = [
   {
@@ -33,11 +31,21 @@ const appRoutes: Routes = [
     component: SignupComponent,
     data: { title: 'Sign Up' }
   },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/stocks',
     pathMatch: 'full'
   },
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+    data: { title: '404'}
+  },
+  {
+    path: '404',
+    component: PageNotFoundComponent,
+    data: { title: '404'}
+  }
 ];
 
 @NgModule({
@@ -56,7 +64,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { useHash: true, enableTracing: true }, // tracing for debugging, usehash for userfriendly urls
     )
   ],
   providers: [],
