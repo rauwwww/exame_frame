@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './404/pageNotFound.component';
 
 const appRoutes: Routes = [
   {
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/stocks',
     pathMatch: 'full'
-  }
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     StockComponent,
     StocksComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
