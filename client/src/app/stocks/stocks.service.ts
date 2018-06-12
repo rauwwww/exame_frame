@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 export class StockService {
     private getStockUrl = 'stock/get';  // URL to web API
     private postStockUrl = 'stock/post';  // URL to web API
-    private postPriceUrl = 'stockprice/post';
+    private postPriceUrl = 'stockprice/stockPost';
     constructor (private http: Http) {}
     private socket;
     private url = window.location.origin;
@@ -46,13 +46,15 @@ export class StockService {
             .map(this.extractData)
             .catch(this.handleError);
     }
-    addPrice (StockPrice: StockPrice): Observable<StockPrice> {
+    addPrice(id, price) {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-
-        return this.http.post(this.postPriceUrl, StockPrice, options)
-            .map(this.extractData)
-            .catch(this.handleError);
+        const priceData = {
+            id: id,
+            price: price
+        };
+        return this.http.post(this.postPriceUrl, priceData, options)
+            .map(res => res.json());
     }
 
     /*

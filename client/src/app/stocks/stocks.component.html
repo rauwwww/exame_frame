@@ -31,15 +31,13 @@
             </div>
             <div class="col-sm-2 col-sm-offset-4" style="margin-top:25px">
 
-                <form (ngSubmit)="submitPrice()">
-                        <div class="form-group">
-                        <label for="stockPrice">stockPrice</label>
-                        <input type="text" class="form-control" id="stockPrice"
-                                required
-                                [(ngModel)]="model.stockPrice" name="stockPrice">
-                        </div>
-                        <button ng-click="submitStock()" type="submit" class="btn  btn-block btn-info pull-right">Add Price</button>
-                </form>
+                <!-- <div *ngIf="newPrice.indexOf(message._id) > -1">
+                    <form [formGroup]="priceFrom">
+                        <input type="text" class="form-control" formControlName="price">
+                        <button [disabled]="!priceForm.valid" type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="postPrice(message._id)">Add Price</button>
+                    </form>
+                </div> -->
+
             </div>
         </div>
         <table class="table table-striped">
