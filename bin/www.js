@@ -23,6 +23,7 @@ var users = require('../routes/users');
 var stock = require('../routes/stock');
 
 // view engine setup
+
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
@@ -41,9 +42,8 @@ app.use('/stock', stock);
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-
-// Auth
-
+// Ads routing to stocks
+app.use('/stocks', express.static(path.join(__dirname, 'dist')));
 
 
 // catch 404 and forward to error handler
