@@ -21,5 +21,6 @@ exports.stockSchema = new Schema ({
     strockPrice: [ exports.stockPriceSchema ]
 })
 
+
 exports.Stock = mongoose.model('Stock', exports.stockSchema);
 exports.StockPrice = mongoose.model('StockPrice', exports.stockPriceSchema);

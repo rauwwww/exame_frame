@@ -14,9 +14,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var socketio = require('socket.io');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var passConf = require('../config/passport');
 
-//var users = require('../routes/users');
-var blog = require('../routes/blog');
+// API routes
+var users = require('../routes/users');
 var stock = require('../routes/stock');
 
 // view engine setup
@@ -29,14 +32,19 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(passport.initialize());
 
 //app.use('/blog', blog);
-//app.use('/users', users);
+app.use('/users', users);
 app.use('/stock', stock);
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client/dist')));
+
+
+// Auth
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
