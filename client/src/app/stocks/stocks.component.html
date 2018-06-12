@@ -40,14 +40,14 @@
                           <th>Time</th>
                         </tr>
                 </thead>
-                <tbody class="panel-body" *ngFor="let strockPrice of message.strockPrice"> 
+                <tbody class="panel-body" *ngFor="let stockPrice of message.stockPrice"> 
                         
-                        <tr *ngIf="strockPrice?.price">
-                            <td>{{strockPrice.price}} $</td>
-                            <td>{{strockPrice.data}}</td>
+                        <tr *ngIf="stockPrice?.price">
+                            <td>{{stockPrice.price}} $</td>
+                            <td>{{stockPrice.data}}</td>
                         </tr>      
                         
-                        <tr *ngIf="strockPrice?.price.lenght < 0">
+                        <tr *ngIf="stockPrice.price?.lenght < 0">
                             <td>Nothing to see here</td></tr>
 
                 </tbody>
