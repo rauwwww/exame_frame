@@ -2,6 +2,10 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #eee;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
   }
   
   .form-signin {
@@ -68,7 +72,7 @@ body {
     margin:0;
     padding:30px 0 0 0;
     font-weight:900;
-    background-color: #337ab7;
+    background-color: #1993B6;
       min-width: 300px;
       padding-right: 10px;
       z-index: 2;
@@ -76,15 +80,19 @@ body {
 
   .title{
     position: relative;
-    background: linear-gradient(to right, #337ab7 0%, #337ab7 25%, transparent 25%, transparent 100%);
+    background: linear-gradient(to right, #1993B6 0%, #1993B6 25%, transparent 25%, transparent 100%);
   }
 
   .title h4:after {
-      background: linear-gradient(to top right, #337ab7 0%, #337ab7 50%, transparent 50%, transparent 100%);
+      background: linear-gradient(to top right, #1993B6 0%, #1993B6 50%, transparent 50%, transparent 100%);
       content: '';
       width: 72px;
       height: 100%;
       position: absolute;
       top: 0;
       right: -72px;
+  }
+
+  .clightblue {
+    background-color:#5bc0de !important;
   }
