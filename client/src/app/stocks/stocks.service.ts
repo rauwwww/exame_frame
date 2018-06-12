@@ -51,10 +51,12 @@ export class StockService {
         let options = new RequestOptions({ headers: headers });
         const priceData = {
             id: id,
-            price: price
+            price: price,
+            date: Date.now()
         };
         return this.http.post(this.postPriceUrl, priceData, options)
-            .map(res => res.json());
+            .map(this.extractData)
+            .catch(this.handleError);
     }
 
     /*

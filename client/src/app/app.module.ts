@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // App components init
@@ -62,6 +62,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       { useHash: true, enableTracing: true }, // tracing for debugging, usehash for userfriendly urls

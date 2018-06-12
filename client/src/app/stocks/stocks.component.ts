@@ -32,10 +32,12 @@ export class StocksComponent implements OnInit {
 
   createPriceForm() {
     this.priceForm = this.formBuilder.group({
-      comment: ['', Validators.compose([
-        Validators.required
+      price: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(200)
       ])]
-    })
+    });
   }
 
   logout() {

@@ -31,12 +31,21 @@
             </div>
             <div class="col-sm-2 col-sm-offset-4" style="margin-top:25px">
 
-                <!-- <div *ngIf="newPrice.indexOf(message._id) > -1">
+                <!-- <div *ngIf="newPrice.indexOf(message._id)">
                     <form [formGroup]="priceFrom">
                         <input type="text" class="form-control" formControlName="price">
                         <button [disabled]="!priceForm.valid" type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="postPrice(message._id)">Add Price</button>
                     </form>
+
+                    
                 </div> -->
+
+                <div *ngIf="newPrice.indexOf(message._id)">
+                        <form [formGroup]="priceForm">
+                            <input type="text" class="form-control" formControlName="price">
+                            <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="submitPrice(message._id)">Add Price</button>
+                        </form>
+                </div>
 
             </div>
         </div>
@@ -51,7 +60,7 @@
                         
                         <tr *ngIf="stockPrice?.price">
                             <td>{{stockPrice.price}} $</td>
-                            <td>{{stockPrice.data}}</td>
+                            <td>{{stockPrice.date}}</td>
                         </tr>      
                         
                         <tr *ngIf="stockPrice.price?.lenght < 0">
