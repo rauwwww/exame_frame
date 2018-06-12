@@ -46,7 +46,8 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Ads routing to stocks
 app.use('/stocks', express.static(path.join(__dirname, 'dist')));
-
+app.use('/login', express.static(path.join(__dirname, 'dist')));
+app.use('/signup', express.static(path.join(__dirname, 'dist')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

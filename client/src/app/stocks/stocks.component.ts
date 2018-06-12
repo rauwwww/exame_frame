@@ -76,6 +76,12 @@ export class StocksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getStocks();
+    // checks if user is loggedin and has token
+    if (localStorage.getItem('jwtToken') != null) {
+      this.getStocks();
+      console.log('localtoken:', localStorage.getItem('jwtToken'));
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 }
