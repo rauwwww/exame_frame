@@ -9,6 +9,29 @@ import { StocksComponent } from './stocks/stocks.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  {
+    path: 'stocks',
+    component: StocksComponent,
+    data: { title: 'Stock List' }
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login' }
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    data: { title: 'Sign Up' }
+  },
+  { path: '',
+    redirectTo: '/stocks',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -23,8 +46,14 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     HttpModule,
     HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
