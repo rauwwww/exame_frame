@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock, StockPrice } from '../models/stock';
 import { StockService } from './stocks.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-stocks',
@@ -18,7 +19,12 @@ export class StocksComponent implements OnInit {
   model = new Stock('', new Array<StockPrice>());
   public stockList = [];
 
-  constructor (private stockService: StockService) {}
+  constructor (private stockService: StockService, private router: Router) {}
+
+  logout() {
+    localStorage.removeItem('jwtToken');
+    this.router.navigate(['login']);
+  }
 
   submitStock() {
     this.stockService.addStock(this.model)

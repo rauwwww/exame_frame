@@ -14,7 +14,7 @@ import { of } from 'rxjs/observable/of';
 
 export class SignupComponent {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
     signupData = { username:'', password:'' };
     message = '';
@@ -22,7 +22,7 @@ export class SignupComponent {
     signup() {
         this.http.post('/users/signup',this.signupData).subscribe(resp => {
           console.log(resp);
-        
+          this.router.navigate(['login']);
         }, err => {
           this.message = err.error.msg;
         });
