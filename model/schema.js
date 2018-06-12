@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var exports = module.exports = {};
 
-exports.blogSchema = new Schema({
-    author: String,
-    body:   String
-});
-exports.Blog = mongoose.model('Blog',exports.blogSchema);
+// exports.blogSchema = new Schema({
+//     author: String,
+//     body:   String
+// });
+// exports.Blog = mongoose.model('Blog',exports.blogSchema);
 
 
 // stockSchema Added
@@ -18,7 +18,7 @@ exports.stockPriceSchema = new Schema ({
 
 exports.stockSchema = new Schema ({
     name: String,
-    strockPrice: [ exports.stockPriceSchema ]
+    stockPrice: [ exports.stockPriceSchema ]
 })
 
 

@@ -37,6 +37,17 @@ export class StocksComponent implements OnInit {
         error =>  this.title = <any>error
       );
   }
+  submitPrice() {
+    this.stockService.addPrice(this.stockPricemodel)
+    .subscribe(
+      stogMsg => {
+        // console.log("Messages:", messages);
+        this.stockPricemodel = stogMsg;
+        // this.getBlogs();
+      },
+      error =>  this.title = <any>error
+    );
+  }
   getStocks() {
     console.log('Subscribe to service');
     this.stockService.getStocks()

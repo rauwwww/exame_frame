@@ -21,6 +21,7 @@ var passConf = require('../config/passport');
 // API routes
 var users = require('../routes/users');
 var stock = require('../routes/stock');
+var stockprice = require('../routes/stockprice');
 
 // view engine setup
 
@@ -38,6 +39,7 @@ app.use(passport.initialize());
 //app.use('/blog', blog);
 app.use('/users', users);
 app.use('/stock', stock);
+app.use('/stockprice', stockprice);
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client/dist')));
