@@ -7,12 +7,14 @@ import * as io from 'socket.io-client';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { ObserveOnMessage } from 'rxjs/operators/observeOn';
 
 @Injectable()
 export class StockService {
     private getStockUrl = 'stock/get';  // URL to web API
     private postStockUrl = 'stock/post';  // URL to web API
     private postPriceUrl = 'stock/stockPost';
+    private deleteStockUrl = 'stock/delete';
     constructor (private http: Http) {}
     private socket;
     private url = window.location.origin;
@@ -56,6 +58,16 @@ export class StockService {
             date: Date.now()
         };
         return this.http.post(this.postPriceUrl, priceData, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+    removeStock(id): Observable<Stock> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        const stockId = {
+            id: id
+        };
+        return this.http.post(this.deleteStockUrl, stockId, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -44,6 +44,7 @@
                         <form [formGroup]="priceForm">
                             <input type="text" class="form-control" formControlName="price">
                             <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="submitPrice(message._id)">Add Price</button>
+                            <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="removeStock(message._id)">Remove Stock</button>
                         </form>
                 </div>
 

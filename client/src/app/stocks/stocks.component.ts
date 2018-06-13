@@ -66,6 +66,12 @@ export class StocksComponent implements OnInit {
     error =>  console.log(error, 'error while submitting stock')
     );
   }
+  removeStock(id) {
+    this.stockService.removeStock(id)
+    .subscribe(data => {},
+    error => console.log(error, 'error while deleting stock')
+    );
+  }
 
   getStocks() {
     console.log('Subscribe to service');
