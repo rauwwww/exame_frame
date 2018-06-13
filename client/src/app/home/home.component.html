@@ -53,22 +53,17 @@
                      
                             <td class="text-center">
                             <!-- Show Comments -->
-        <li *ngIf="enabledComments.indexOf(message._id)  === -1  " class="list-group-item">
-                <button (click)="expand(message._id)">Hide</button>
-                <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p>{{ stockPrice.price }} $</p></td> 
-                <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</p></td> 
-              </li>
-      
-              <!-- Hide Comments -->
-              <li *ngIf="enabledComments.indexOf(message._id)  > -1" class="list-group-item">
-                <button (click)="collapse(message._id)">Show</button>
+                                <div *ngIf="enabledComments.indexOf(message._id) > -1">
+                                        <button class="btn btn-info btn-lg" (click)="collapse(message._id)">Hide</button>
+                                        <td class="text-center" *ngFor="let stockPrice of message.stockPrice"><p>{{ stockPrice.price }} $</p></td> 
+                                        <td class="text-center" *ngFor="let stockPrice of message.stockPrice"><p >{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</p></td> 
+                                    </div>
+                            
+                                    <!-- Hide Comments -->
+                                    <div *ngIf="enabledComments.indexOf(message._id)   === -1  ">
+                                        <button class="btn btn-info btn-lg" (click)="expand(message._id)">Show</button>
 
-              </li>
-
-                                              
-                           
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
+                                    </div>
                             </td>
                         </tr>
                        
