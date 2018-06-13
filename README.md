@@ -4,8 +4,10 @@ This template project for building MEAN applications is based on Mongoose, Expre
 
 Below instructions explain how to get started using this template, either with or without live updates as source files changes.
 
-## Online test
-You can try the template application at (https://mean-socket-template.herokuapp.com/). The online example is deployed to free services at Heroku (https://www.heroku.com) and mLab (https://mlab.com).
+## Mocha, chai testing
+Requires global installation of Mocha
+npm install -g mocha@2.3.1
+Run tests by writing 'mocha' in root.
 
 ## Install prerequisities
 1. Install NodeJS (https://nodejs.org)
@@ -31,11 +33,3 @@ You can try the template application at (https://mean-socket-template.herokuapp.
 
 ## Access running solution
 1. Open your localhost in browser (http://127.0.0.1:3000/)
-
-## Contribution
-
-[Contribution](https://github.com/mortenmathiasen/MEAN-socket-template/blob/master/CONTRIBUTING.md) is very welcome. Please, follow [code of conduct](https://github.com/mortenmathiasen/MEAN-socket-template/blob/master/CODE_OF_CONDUCT.md).
-
-## License
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/mortenmathiasen/MEAN-socket-template/blob/master/LICENSE)
