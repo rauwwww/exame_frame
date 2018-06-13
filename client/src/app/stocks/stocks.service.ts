@@ -47,7 +47,7 @@ export class StockService {
             .map(this.extractData)
             .catch(this.handleError);
     }
-    addPrice(id, price) {
+    addPrice(id, price): Observable<Stock> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         const priceData = {

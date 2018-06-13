@@ -61,6 +61,7 @@ router.post("/stockPost", (req, res) => {
                             res.json({ success: false, message: 'Something went wrong duh'});
                         } else {
                             res.json({ success: true, message: 'Price saved'});
+                            router.notifyclients();
                         }
                 });
             }
