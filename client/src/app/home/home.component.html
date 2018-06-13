@@ -46,7 +46,8 @@
                     <tbody>
                         <tr  *ngFor="let message of stockList">
                             <td >{{ message.name}}</td>
-                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.price}}</p></td>                    
+                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.price}}</p></td>  
+                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.Date}}</p></td>                         
                             <td class="text-center">
                                 <button class="btn btn-info">History</button>
                             </td>
