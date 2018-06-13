@@ -76,7 +76,7 @@ router.addClient = function (client) {
     router.notifyclients(client);
 };
 router.notifyclients = function (client) { 
-    schema.Stock.find({}).exec(function (err, stocks) {
+    schema.Stock.find({}).sort({_id:-1}).exec(function (err, stocks) {
         if (err)
             return console.error(err);
         //console.log("Load success: ", blogs);
