@@ -69,6 +69,23 @@ router.post("/stockPost", (req, res) => {
 });
 
 
+router.post("/delete", (req, res) => {
+    schema.Stock.findById(req.body.id, function(err, stock) {
+      if(err) {
+        res.json({'ERROR': err});
+      } else {
+        stock.remove(function(err){
+          if(err) {
+            res.json({'ERROR': err});
+          } else {
+            res.json({'REMOVED': stock});
+            router.notifyclients();
+          }
+        });
+      }
+    });
+  });
+
 
 /* Notify stock prices to connected clients */
 router.clients = [];
