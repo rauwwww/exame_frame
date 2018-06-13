@@ -13,7 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class StocksComponent implements OnInit {
 
   isSubmitted = false;
-  title = 'Trading App';
+  title = 'Trading App test lol';
   //model = new Blog('', '');
   public stockName = [];
   stockPrice = new StockPrice('', '');
