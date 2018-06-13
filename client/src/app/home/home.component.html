@@ -54,14 +54,54 @@
                             <td class="text-center">
                             <!-- Show Comments -->
                                 <div *ngIf="enabledComments.indexOf(message._id) > -1">
-                                        <button class="btn btn-info btn-lg" (click)="collapse(message._id)">Hide</button>
-                                        <td class="text-center" *ngFor="let stockPrice of message.stockPrice"><p>{{ stockPrice.price }} $</p></td> 
-                                        <td class="text-center" *ngFor="let stockPrice of message.stockPrice"><p >{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</p></td> 
+                                        
+
+                                        <div id="myModal" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                              
+                                                  <!-- Modal content-->
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                      <h4 class="modal-title">{{ message.name}}</h4>
+                                                      
+                                                       
+                                                      
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table table-responsive">
+                                                                <thead>
+                                                                    <tr>
+                                                                        
+                                                                        <th>Price</th>
+                                                                        <th class="text-center">Last Updated</th>
+                                                                        
+                                                                    </tr>
+                                                                </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice">{{ stockPrice.price }} $</td> 
+                                                   
+                                            
+                                                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                                        </tr>
+                                                        </tbody> 
+                                                    
+                                                 </table>
+                                                </div>
+                                                    <div class="modal-footer">
+                                                            <button class="btn btn-info btn-lg" (click)="collapse(message._id)" data-dismiss="modal">Hide</button>
+                                                    </div>
+                                                  </div>
+                                              
+                                                </div>
+                                              </div>
+                                       
                                     </div>
                             
                                     <!-- Hide Comments -->
                                     <div *ngIf="enabledComments.indexOf(message._id)   === -1  ">
-                                        <button class="btn btn-info btn-lg" (click)="expand(message._id)">Show</button>
+                                        <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" (click)="expand(message._id)">Show</button>
 
                                     </div>
                             </td>
