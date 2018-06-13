@@ -47,9 +47,28 @@
                         <tr *ngFor="let message of stockList">
                             <td >{{ message.name}}</td>
                             <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.price }} $</p></td>  
-                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss' }}</p></td>                         
+                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</p></td>  
+                            
+                           
+                     
                             <td class="text-center">
-                                <button class="btn btn-info">History</button>
+                            <!-- Show Comments -->
+        <li *ngIf="enabledComments.indexOf(message._id)  === -1  " class="list-group-item">
+                <button (click)="expand(message._id)">Hide</button>
+                <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p>{{ stockPrice.price }} $</p></td> 
+                <td class="text-center" *ngFor="let stockPrice of message.stockPrice;  let i=index"><p *ngIf="i<1">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</p></td> 
+              </li>
+      
+              <!-- Hide Comments -->
+              <li *ngIf="enabledComments.indexOf(message._id)  > -1" class="list-group-item">
+                <button (click)="collapse(message._id)">Show</button>
+
+              </li>
+
+                                              
+                           
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
                             </td>
                         </tr>
                        
@@ -92,11 +111,3 @@
     </div>
 </div>
 
-<div class="panel panel-default col-sm-12"  >
- 
-    <div class="row">
-        <div class="col-sm-6">
-            <h2 class="li-header"> {{ message.name }} </h2>
-        </div>
-        <div class="col-sm-2 col-sm-offset-4" style="margin-top:25px">
-            </div>

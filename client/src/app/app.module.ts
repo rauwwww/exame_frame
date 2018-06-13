@@ -15,7 +15,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 // Angular Routing
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 
-
 const appRoutes: Routes = [
   {
     path: 'stocks',
@@ -67,7 +66,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { useHash: true, enableTracing: true }, // tracing for debugging, usehash for hash urls should be html5 urls eventually
-    )
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]
