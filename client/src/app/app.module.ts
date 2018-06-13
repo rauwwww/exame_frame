@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { StockComponent } from './stock/stock.component';
 import { StocksComponent } from './stocks/stocks.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './404/pageNotFound.component';
 import { SignupComponent } from './signup/signup.component';
 // Angular Http for REST API
@@ -22,9 +22,9 @@ const appRoutes: Routes = [
     data: { title: 'Stock List' }
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    data: { title: 'Login' }
+    path: 'home',
+    component: HomeComponent,
+    data: { title: 'Home' }
   },
   {
     path: 'signup',
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/stocks',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     AppComponent,
     StockComponent,
     StocksComponent,
-    LoginComponent,
+    HomeComponent,
     SignupComponent,
     PageNotFoundComponent,
   ],

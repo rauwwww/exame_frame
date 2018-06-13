@@ -42,7 +42,7 @@ export class StocksComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('jwtToken');
-    this.router.navigate(['login']);
+    this.router.navigate(['home']);
   }
 
   submitStock() {

@@ -6,13 +6,13 @@ import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
 
   })
 
-export class LoginComponent {
+export class HomeComponent {
 
 constructor(private http: HttpClient, private router: Router) { }
 
