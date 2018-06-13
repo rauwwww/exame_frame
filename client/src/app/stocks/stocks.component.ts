@@ -13,7 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class StocksComponent implements OnInit {
 
   isSubmitted = false;
-  title = 'MEAN app with Socket IO';
+  title = 'Trading App';
   //model = new Blog('', '');
   public stockName = [];
   stockPricemodel = new StockPrice('', '');
