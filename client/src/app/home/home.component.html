@@ -70,24 +70,20 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <table class="table table-responsive">
-                                                                <thead>
-                                                                    <tr>
-                                                                        
-                                                                        <th>Price</th>
-                                                                        <th class="text-center">Last Updated</th>
-                                                                        
-                                                                    </tr>
-                                                                </thead>
-                                                        <tbody>
+                                                        <thead>
+                                                            <tr>                                                       
+                                                                <th class="text-center">Price</th>
+                                                                <th class="text-center">Last Updated</th>                                                           
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody *ngFor="let stockPrice of message.stockPrice">
                                                             <tr>
-                                                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice">{{ stockPrice.price }} $</td> 
-                                                   
-                                            
-                                                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                                            <td class="text-center">{{ stockPrice.price }} $</td>                                      
+                                                            <td class="text-center">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                                                         </tr>
                                                         </tbody> 
                                                     
-                                                 </table>
+                                                        </table>
                                                 </div>
                                                     <div class="modal-footer">
                                                             <button class="btn btn-info btn-lg" (click)="collapse(message._id)" data-dismiss="modal">Hide</button>
