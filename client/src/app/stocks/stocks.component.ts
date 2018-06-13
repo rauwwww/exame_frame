@@ -16,7 +16,7 @@ export class StocksComponent implements OnInit {
   title = 'MEAN app with Socket IO';
   //model = new Blog('', '');
   public stockName = [];
-  stockPricemodel = new StockPrice('', '');
+  stockPrice = new StockPrice('', '');
   model = new Stock('', new Array<StockPrice>());
   public stockList = [];
   priceForm;
@@ -53,15 +53,18 @@ export class StocksComponent implements OnInit {
           this.model = stogMsg;
           // this.getBlogs();
         },
-        error =>  this.title = <any>error
+        error =>  console.log(error, 'error while submitting stock')
       );
   }
   submitPrice(id) {
     const price = this.priceForm.get('price').value;
-    this.stockService.addPrice(id, price).subscribe(data => {
+    this.stockService.addPrice(id, price)
+    .subscribe(data => {
       const index = this.newPrice.indexOf(id); // Get the index of the blog id to remove from array
       this.newPrice.splice(index, 1); // Remove id from the array
-    });
+    },
+    error =>  console.log(error, 'error while submitting stock')
+    );
   }
 
   getStocks() {
@@ -72,9 +75,7 @@ export class StocksComponent implements OnInit {
           // console.log("Messages:",messages);
           this.stockList = messages;
           console.log(messages);
-        },
-        error =>  this.title = <any>error
-      );
+        });
   }
 
   ngOnInit() {

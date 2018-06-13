@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 export class StockService {
     private getStockUrl = 'stock/get';  // URL to web API
     private postStockUrl = 'stock/post';  // URL to web API
-    private postPriceUrl = 'stockprice/stockPost';
+    private postPriceUrl = 'stock/stockPost';
     constructor (private http: Http) {}
     private socket;
     private url = window.location.origin;
@@ -25,6 +25,7 @@ export class StockService {
             console.log('Socket:', this.url);
             this.socket = io(this.url);
             this.socket.on('refresh', (data) => {
+                console.log('hello', data);
                 observer.next(data);
             });
 

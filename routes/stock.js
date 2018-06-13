@@ -24,7 +24,6 @@ router.post('/post', function(req, res, next) {
        "body": "Hello everyone"
      }
      **/
-
     schema.Stock.find({}).sort({_id:-1}).skip(10).exec(function (err, stocks) {
         console.log("Hallo 2");
         if (err)
@@ -45,20 +44,45 @@ router.post('/post', function(req, res, next) {
 });
 
 
+router.post("/stockPost", (req, res) => {
+    var instance = new schema.StockPrice(req.body);
+
+    if (!req.body.price) {
+        res.json({ success: false, message: 'No stockprice provided'});
+    } else {
+        if(!req.body.id) {
+            res.json({ success: false, message: 'No id was provided'});
+        } else {
+                schema.Stock.update(
+                    { _id: req.body.id },
+                    { $push: { stockPrice: instance } },
+                    function (err, StockPrice) {
+                        if (err) {
+                            res.json({ success: false, message: 'Something went wrong duh'});
+                        } else {
+                            res.json({ success: true, message: 'Price saved'});
+                        }
+                });
+            }
+        }
+});
+
+
+
 /* Notify stock prices to connected clients */
 router.clients = [];
 router.addClient = function (client) {
     router.clients.push(client);
     router.notifyclients(client);
 };
-router.notifyclients = function (client) {
+router.notifyclients = function (client) { 
     schema.Stock.find({}).exec(function (err, stocks) {
         if (err)
             return console.error(err);
         //console.log("Load success: ", blogs);
         var toNotify = client?new Array(client):router.clients;
         toNotify.forEach(function(socket){
-            socket.emit('refresh', stocks);
+            socket.emit('refresh', stocks);        
         })
     });
 }

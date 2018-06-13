@@ -60,7 +60,7 @@
                         
                         <tr *ngIf="stockPrice?.price">
                             <td>{{stockPrice.price}} $</td>
-                            <td>{{stockPrice.date | date : "medium"}}</td>
+                            <td>{{stockPrice.date | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                         </tr>      
                         
                         <tr *ngIf="stockPrice.price?.lenght < 0">
