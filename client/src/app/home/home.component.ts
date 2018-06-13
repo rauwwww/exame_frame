@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+import { StockService } from '../stocks/stocks.service';
 import { Observable } from 'rxjs/Observable';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -9,12 +10,18 @@ import { of } from 'rxjs/observable/of';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
-
+    providers: [StockService],
   })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-constructor(private http: HttpClient, private router: Router) { }
+  public stockList = [];
+
+constructor(
+  private http: HttpClient,
+  private router: Router,
+  private stockService: StockService)
+  { }
 
 loginData = { username:'', password:'' };
 message = '';
@@ -29,6 +36,27 @@ login() {
     }, err => {
       this.message = err.error.msg;
     });
+  }
+
+  getStocks() {
+    console.log('Subscribe to service');
+    this.stockService.getStocks()
+      .subscribe(
+        messages => {
+          // console.log("Messages:",messages);
+          this.stockList = messages;
+          console.log(messages);
+        });
+  }
+
+  ngOnInit() {
+    // checks if user is loggedin and has token
+    if (localStorage.getItem('jwtToken') != null) {
+      this.getStocks();
+      console.log('localtoken:', localStorage.getItem('jwtToken'));
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
 }

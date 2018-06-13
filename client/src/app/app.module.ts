@@ -15,6 +15,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 // Angular Routing
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 
+
 const appRoutes: Routes = [
   {
     path: 'stocks',
