@@ -55,7 +55,7 @@ router.post("/stockPost", (req, res) => {
         } else {
                 schema.Stock.update(
                     { _id: req.body.id },
-                    { $push: { stockPrice: instance } },
+                    { $push: { stockPrice: { "$each": [instance], "$position": 0 } } },
                     function (err, StockPrice) {
                         if (err) {
                             res.json({ success: false, message: 'Something went wrong duh'});
