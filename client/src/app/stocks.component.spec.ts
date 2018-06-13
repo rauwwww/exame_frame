@@ -20,7 +20,7 @@ describe('Trading App', () => {
             AppModule
         ],
         declarations: [
-        
+
       ],
     });
   });
