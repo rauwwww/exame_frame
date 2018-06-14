@@ -18,11 +18,14 @@ export class SignupComponent {
 
     signupData = { username:'', password:'' };
     message = '';
+    data: any;
 
     signup() {
         this.http.post('/users/signup',this.signupData).subscribe(resp => {
+          this.data = resp;
+          localStorage.setItem('jwtToken', this.data.token);
           console.log(resp);
-          this.router.navigate(['home']);
+          this.router.navigate(['stocks']);
         }, err => {
           this.message = err.error.msg;
         });
