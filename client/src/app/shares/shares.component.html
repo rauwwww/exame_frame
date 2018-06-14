@@ -1,51 +1,71 @@
 <div class="container">
     <div class="row">
-        <button class="btn btn-success" (click)="logout()">Logout</button>
+        <div class="col-sm-6">
 
-        <h2>Add a new share</h2>
-        <form (ngSubmit)="submitShare()">
-            <div class="form-group">
-                <label for="name">ShareName</label>
-                <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name">
-            </div>
-            <button ng-click="submitShare()" type="submit" class="btn btn-large btn-block btn-info">Add Share</button>
-        </form>
+            <h1>Welcome to Admin panel</h1>
+            <p>You can logout here: </p>
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
 
-        <hr>
+        <br />
 
-        <h1>All Shares!</h1>
+        <div class="col-sm-6">
+            <h2>Add a new share</h2>
+            <form (ngSubmit)="submitShare()">
+                <div class="form-group">
+                    <label for="name">ShareName</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" placeholder="Enter Share Name here">
+                </div>
+                <button ng-click="submitShare()" type="submit" class="btn btn-success">Add Share</button>
+            </form>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class="panel panel-default col-sm-12" *ngFor="let share of shareList">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h2 class="li-header"> {{ share.name }} </h2>
-                    </div>
-                    <div class="col-sm-2" style="margin-top:25px">
-                        <div *ngIf="newPrice.indexOf(share._id)">
-                            <form [formGroup]="priceForm">
-                                <input type="text" class="form-control" formControlName="rate">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 col-sm-offset-2">
-                        <button type="submit" name="button" class="btn btn-block btn-info" (click)="submitRate(share._id)">Add Rate</button>
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="submit" name="button" class="btn btn-block btn-danger" (click)="removeShare(share._id)">Remove Share</button>
+
+    <hr>
+
+    <div class="row">
+        <h1>Share listing:</h1>
+    </div>
+
+    <div class="row">
+        <div class="panel panel-default col-sm-12" *ngFor="let share of shareList">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2 class="li-header">
+                        <b> {{ share.name }} </b>
+                    </h2>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" name="button" class="btn btn-block btn-primary form-control" (click)="submitRate(share._id)" style="margin-top:24px;">Add Rate</button>
+                </div>
+                <div class="col-sm-3" style="margin-top:25px">
+                    <div *ngIf="newPrice.indexOf(share._id)">
+                        <form [formGroup]="priceForm">
+                            <input type="text" class="form-control" formControlName="rate" placeholder="Enter rate here">
+                        </form>
                     </div>
                 </div>
-                <table class="table table-striped">
-                    <thead>
+                <div class="col-sm-2">
+                    <button type="submit" name="button" class="btn btn-block btn-danger form-control" (click)="removeShare(share._id)" style="margin-top:24px;">Remove Share</button>
+                </div>
+            </div>
+
+            <br />
+            <hr>
+
+            <div class="table-responsive" style="margin-top: 20px">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
                         <tr>
-                            <th>Rate</th>
+                            <th style="width:40%">Rate</th>
                             <th>Time</th>
                         </tr>
                     </thead>
-                    <tbody class="panel-body" *ngFor="let rate of share.shareRate">
+                    <tbody class="" *ngFor="let rate of share.shareRate">
 
                         <tr *ngIf="rate?.rate">
-                            <td>{{rate.rate}} $</td>
+                            <td style="width:40%">{{rate.rate}} $</td>
                             <td>{{rate.date | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                         </tr>
 
@@ -54,9 +74,8 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
-
     </div>
+
 </div>
