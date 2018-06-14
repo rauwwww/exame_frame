@@ -1,14 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-
             <h1>Welcome to Admin panel</h1>
             <p>You can logout here: </p>
             <button class="btn btn-danger" (click)="logout()">Logout</button>
         </div>
-
-        <br />
-
         <div class="col-sm-6">
             <h2>Add a new share</h2>
             <form (ngSubmit)="submitShare()">
@@ -20,14 +16,10 @@
             </form>
         </div>
     </div>
-
-
     <hr>
-
     <div class="row">
         <h1>Share listing:</h1>
     </div>
-
     <div class="row">
         <div class="panel panel-default col-sm-12" *ngFor="let share of shareList">
             <div class="row">
@@ -50,10 +42,8 @@
                     <button type="submit" name="button" class="btn btn-block btn-danger form-control" (click)="removeShare(share._id)" style="margin-top:24px;">Remove Share</button>
                 </div>
             </div>
-
             <br />
             <hr>
-
             <div class="table-responsive" style="margin-top: 20px; padding-bottom:15px;">
                 <table class="table table-bordered table-hover">
                     <thead class="thead-dark">
@@ -63,12 +53,10 @@
                         </tr>
                     </thead>
                     <tbody class="" *ngFor="let rate of share.shareRate">
-
                         <tr *ngIf="rate?.rate">
                             <td style="width:40%">{{rate.rate}} $</td>
                             <td>{{rate.date | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                         </tr>
-
                         <tr *ngIf="rate.rate?.lenght < 0">
                             <td>Nothing to see here</td>
                         </tr>
@@ -77,5 +65,4 @@
             </div>
         </div>
     </div>
-
 </div>

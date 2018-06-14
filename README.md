@@ -1,18 +1,12 @@
-# MEAN-socket-template
-
-This template project for building MEAN applications is based on Mongoose, Express, Angular, NodeJS and Socket IO. The template uses the [Angular CLI](https://cli.angular.io/) build system for compilation and deployment of the frontend application into the [NodeJS](https://nodejs.org) server.
-
-Below instructions explain how to get started using this template, either with or without live updates as source files changes.
-
-## Mocha, chai testing
-Requires global installation of Mocha
-npm install -g mocha@2.3.1
-Run tests by writing 'mocha' in root.
+# Frameworks Exam: MEAN application
+# Stock Exchange application
+# Made by Søren Ravn Lund
 
 ## Install prerequisities
 1. Install NodeJS (https://nodejs.org)
 2. Install Angular CLI (https://cli.angular.io)
 3. Install Mongo (https://www.mongodb.com)
+4. (For Express testing) Install Mocha (https://mochajs.org/)
 
 ## Get the software
 1. Clone this project
@@ -33,3 +27,12 @@ Run tests by writing 'mocha' in root.
 
 ## Access running solution
 1. Open your localhost in browser (http://127.0.0.1:3000/)
+
+## Automated tests
+1. Express API testing with Mocha and Chai
+- Requires global installation of Mocha
+- "npm install -g mocha@2.3.1"
+- Run tests by prompting 'mocha' in root.
+
+2. Jasmin Angular testing
+- Prompt 'ng test' when in client folder.

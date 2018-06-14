@@ -1,115 +1,112 @@
-<header> 
-     
-         
-         <div class="container" style="z-index: 999;">
-             <div class="row">
-                 <div class="col-md-12"  >
-                     <h1>Søren Lund</h1><br>
-                     <h1>Framework exam</h1>
-                 </div>
-                
-             </div>
-         </div>
-         
- </header>
-
- <div class="row" style="margin-top:40px">
-        <div class="col-sm-12">
-            <div class="panel panel-primary panel-table">
-                <div class="panel-heading cgreen">
-                    <div class="panel-title text-center">
-                        <h3>Stock Market</h3>
-                        <span>Live statistics from Stock Exchange</span>
-                    </div>
-                    <div class="panel-options">
-                        <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg">
-                            <i class="entypo-cog"></i>
-                        </a>
-                        <a href="#" data-rel="collapse">
-                            <i class="entypo-down-open"></i>
-                        </a>
-                        <a href="#" data-rel="reload">
-                            <i class="entypo-arrows-ccw"></i>
-                        </a>
-                        <a href="#" data-rel="close">
-                            <i class="entypo-cancel"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>Share Name</th>
-                                <th>Rate</th>
-                                <th class="text-center">Last Updated</th>
-                                <th class="text-center">See history</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let share of shareList">
-                                <td>{{ share.name }}</td>
-                                <td class="text-center" *ngFor="let shareRate of share.shareRate | slice:0:1;  let i=index">
-                                    <p *ngIf="i<1">{{ shareRate.rate }} $</p>
-                                    <p *ngIf="share.shareRate.length < -1">No updated Prices yet!</p>
-                                </td>
-                                <td class="text-center" *ngFor="let shareRate of share.shareRate | slice:0:1;  let i=index">
-                                    <p *ngIf="i<1">{{ shareRate.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-                                </td>
-                                <td class="text-center" *ngIf="share.shareRate.length < 1">No updated time yet!</td>
-                                <td class="text-center" *ngIf="share.shareRate.length < 1">No updated Prices yet!</td>
-                                <td class="text-center">
-    
-                                    <!-- Show Comments -->
-                                    <div *ngIf="enabledComments.indexOf(share._id) > -1">
-                                        <div id="myModal" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-    
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title">{{ share.name}}</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <table class="table table-responsive">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="text-center">Price</th>
-                                                                    <th class="text-center">Last Updated</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody *ngFor="let shareRate of share.shareRate">
-                                                                <tr>
-                                                                    <td class="text-center">{{ shareRate.rate }} $</td>
-                                                                    <td class="text-center">{{ shareRate.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-                                                                </tr>
-                                                            </tbody>
-    
-                                                        </table>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-success btn-lg" (click)="collapse(share._id)" data-dismiss="modal">Hide</button>
-                                                    </div>
-                                                </div>
-    
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Hide Comments -->
-                                    <div *ngIf="enabledComments.indexOf(share._id)   === -1  ">
-                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" (click)="expand(share._id)">Show</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+<header>
+    <div class="container" style="z-index: 999;">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Søren Lund</h1>
+                <br>
+                <h1>Framework exam</h1>
             </div>
         </div>
     </div>
-    
+</header>
+
+<div class="row" style="margin-top:40px">
+    <div class="col-sm-12">
+        <div class="panel panel-primary panel-table">
+            <div class="panel-heading cgreen">
+                <div class="panel-title text-center">
+                    <h3>Stock Market</h3>
+                    <span>Live statistics from Stock Exchange</span>
+                </div>
+                <div class="panel-options">
+                    <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg">
+                        <i class="entypo-cog"></i>
+                    </a>
+                    <a href="#" data-rel="collapse">
+                        <i class="entypo-down-open"></i>
+                    </a>
+                    <a href="#" data-rel="reload">
+                        <i class="entypo-arrows-ccw"></i>
+                    </a>
+                    <a href="#" data-rel="close">
+                        <i class="entypo-cancel"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Share Name</th>
+                            <th>Rate</th>
+                            <th class="text-center">Last Updated</th>
+                            <th class="text-center">See history</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let share of shareList">
+                            <td>{{ share.name }}</td>
+                            <td *ngFor="let shareRate of share.shareRate | slice:0:1;  let i=index">
+                                <p *ngIf="i<1">{{ shareRate.rate }} $</p>
+                                <p *ngIf="share.shareRate.length < -1">No updated Prices yet!</p>
+                            </td>
+                            <td class="text-center" *ngFor="let shareRate of share.shareRate | slice:0:1;  let i=index">
+                                <p *ngIf="i<1">{{ shareRate.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                            </td>
+                            <td class="text-center" *ngIf="share.shareRate.length < 1">No updated time yet!</td>
+                            <td class="text-center" *ngIf="share.shareRate.length < 1">No updated Prices yet!</td>
+                            <td class="text-center">
+
+                                <!-- Show History -->
+                                <div *ngIf="enabledComments.indexOf(share._id) > -1">
+                                    <div id="myModal" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">{{ share.name}}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-responsive">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center">Price</th>
+                                                                <th class="text-center">Last Updated</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody *ngFor="let shareRate of share.shareRate">
+                                                            <tr>
+                                                                <td class="text-center">{{ shareRate.rate }} $</td>
+                                                                <td class="text-center">{{ shareRate.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-success btn-lg" (click)="collapse(share._id)" data-dismiss="modal">Hide</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hide History -->
+                                <div *ngIf="enabledComments.indexOf(share._id)   === -1  ">
+                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" (click)="expand(share._id)">Show</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -118,29 +115,30 @@
     <div class="row">
         <div class="col-md-offset-4 col-md-4">
             <div class="form-login">
-            <h4>Admin & Broker login</h4>
-            <form class="form-signin" (ngSubmit)="login()" #loginForm="ngForm">
-                <div class="input-group">
-                    <label for="inputEmail" class="sr-only">UserName</label>
-                    <input type="email" class="form-control" placeholder="Email address" [(ngModel)]="loginData.username" name="username" required/>
-            
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="loginData.password" name="password" required/>
-            
-                    <div class="wrapper" style="margin-top: 20px !important;">
-                        <span class="group-btn"> 
-                            <button class="btn btn-lg btn-success btn-block" type="submit" [disabled]="!loginForm.form.valid">Log in <i class="fa fa-sign-in"></i></button>
-                        </span>
-                        <span class="group-btn">     
-                        <p>Still need an account?</p>
-                            <a [routerLink]="['/signup']">Signup here</a>           
-                        </span>
+                <h4>Admin & Broker login</h4>
+                <form class="form-signin" (ngSubmit)="login()" #loginForm="ngForm">
+                    <div class="input-group">
+                        <label for="inputEmail" class="sr-only">UserName</label>
+                        <input type="email" class="form-control" placeholder="Email-address" [(ngModel)]="loginData.username" name="username" required/>
+
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="loginData.password" name="password" required/>
+
+                        <div class="wrapper" style="margin-top: 20px !important;">
+                            <span class="group-btn">
+                                <button class="btn btn-lg btn-success btn-block" type="submit" [disabled]="!loginForm.form.valid">Log in
+                                    <i class="fa fa-sign-in"></i>
+                                </button>
+                            </span>
+                            <span class="group-btn">
+                                <p>Still need an account?</p>
+                                <a [routerLink]="['/signup']"><b>Sign-Up here</b></a>
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
             </div>
-        
         </div>
     </div>
 </div>
-   
+<br />
