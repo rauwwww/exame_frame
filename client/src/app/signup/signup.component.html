@@ -1,14 +1,30 @@
+
+
 <div class="container">
-    <form class="form-signin" (ngSubmit)="signup()" #signupForm="ngForm">
-        <div class="alert alert-warning alert-dismissible" role="alert" *ngIf="message !== ''">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          {{message}}
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <div class="form-login">
+                <h4>Admin & Broker login</h4>
+                <form class="form-signin" (ngSubmit)="signup()" #loginForm="ngForm">
+                    <div class="input-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" placeholder="Email address" [(ngModel)]="signupData.username" name="username" required/>
+                
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="signupData.password" name="password" required/>
+                
+                        <div class="wrapper" style="margin-top: 20px !important;">
+                            <span class="group-btn"> 
+                                    <button class="btn btn-lg btn-success btn-block" type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
+                            </span>
+
+                        </div>
+                    </div>
+                </form>
+                </div>
+            
+            </div>
         </div>
-        <h2 class="form-signin-heading">No password or email validation</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" class="form-control" placeholder="Email address" [(ngModel)]="signupData.username" name="username" required/>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="signupData.password" name="password" required/>
-        <button class="btn btn-lg btn-info btn-block" type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
-    </form>
-</div>
+    </div>
+       
+    
