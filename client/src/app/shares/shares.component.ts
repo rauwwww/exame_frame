@@ -15,7 +15,7 @@ export class SharesComponent implements OnInit {
   isSubmitted = false;
   title = 'Trading App';
   public ShareName = [];
-  SharePrice = new ShareRate('', '');
+  ShareRate = new ShareRate('', '');
   model = new Share('', new Array<ShareRate>());
   public shareList = [];
   priceForm;
@@ -31,7 +31,7 @@ export class SharesComponent implements OnInit {
 
   createPriceForm() {
     this.priceForm = this.formBuilder.group({
-      price: ['', Validators.compose([
+      rate: ['', Validators.compose([
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(200)
@@ -55,9 +55,9 @@ export class SharesComponent implements OnInit {
         error =>  console.log(error, 'error while submitting Share')
       );
   }
-  submitPrice(id) {
-    const price = this.priceForm.get('price').value;
-    this.shareService.addPrice(id, price)
+  submitRate(id) {
+    const rate = this.priceForm.get('rate').value;
+    this.shareService.addRate(id, rate)
     .subscribe(data => {
       const index = this.newPrice.indexOf(id); // Get the index of the blog id to remove from array
       this.newPrice.splice(index, 1); // Remove id from the array

@@ -1,35 +1,21 @@
 var express = require("express");
 var router = express.Router();
-var mongoose = require("mongoose");
 var schema = require("../model/schema");
-var database = require("../model/database");
 
-/* GET all Stocks */
+/* GET all Shares */
 router.get("/get", function(req, res, next) {
-  schema.Stock.find({}).exec(function(err, stocks) {
+  schema.Share.find({}).exec(function(err, shares) {
     if (err) return console.error(err);
-    console.log("Load success: ", stocks);
-    res.send(stocks);
+    console.log("Load success: ", shares);
+    res.send(shares);
   });
 });
 
-/* POST single stock  */
+/* POST single share  */
 router.post("/post", (req, res) => {
-  var data = new schema.Stock();
+  var data = new schema.Share();
   data.name = req.body.name;
 
-  //   schema.Stock.find({})
-  //     .sort({ _id: -1 })
-  //     .skip(10)
-  //     .exec(function(err, stocks) {
-  //       console.log("Hallo 2");
-  //       if (err) return console.error(err);
-  //       console.log("Loader success: ", stocks);
-  //       stocks.forEach(function(stock) {
-  //         console.log("Loader success: ", stock);
-  //         schema.Stock.findByIdAndRemove(stock._id).exec();
-  //       });
-  //     });
   if (!req.body.name) {
     res.json({ success: false, message: "No stockname provided" });
   } else {
@@ -45,22 +31,22 @@ router.post("/post", (req, res) => {
 });
 
 router.post("/sharePost", (req, res) => {
-  var data = new schema.StockPrice(req.body);
+  var data = new schema.ShareRate(req.body);
 
-  if (!req.body.price) {
-    res.json({ success: false, message: "No stockprice provided" });
+  if (!req.body.rate) {
+    res.json({ success: false, message: "No rate provided" });
   } else {
     if (!req.body.id) {
       res.json({ success: false, message: "No id was provided" });
     } else {
-      schema.Stock.update(
+      schema.Share.update(
         { _id: req.body.id },
-        { $push: { stockPrice: { $each: [data], $position: 0 } } },
-        function(err, StockPrice) {
+        { $push: { shareRate: { $each: [data], $position: 0 } } },
+        function(err, data) {
           if (err) {
             res.json({ success: false, message: "Something went wrong duh" });
           } else {
-            res.json({ success: true, message: "Price saved" });
+            res.json({ success: true, message: "Rate saved" });
             router.notifyclients();
           }
         }
@@ -69,17 +55,17 @@ router.post("/sharePost", (req, res) => {
   }
 });
 
-/* Delete stock with id */
+/* Delete share with id */
 router.post("/delete", (req, res) => {
-  schema.Stock.findById(req.body.id, function(err, stock) {
+  schema.Share.findById(req.body.id, function(err, share) {
     if (err) {
       res.json({ ERROR: err });
     } else {
-      stock.remove(function(err) {
+      share.remove(function(err) {
         if (err) {
           res.json({ ERROR: err });
         } else {
-          res.json({ REMOVED: stock });
+          res.json({ REMOVED: share });
           router.notifyclients();
         }
       });
@@ -87,21 +73,21 @@ router.post("/delete", (req, res) => {
   });
 });
 
-/* Notify stock changes to connected clients */
+/* Notify Share changes to connected clients */
 router.clients = [];
 router.addClient = function(client) {
   router.clients.push(client);
   router.notifyclients(client);
 };
 router.notifyclients = function(client) {
-  schema.Stock.find({})
+  schema.Share.find({})
     .sort({ _id: -1 })
-    .exec(function(err, stocks) {
+    .exec(function(err, shares) {
       if (err) return console.error(err);
-      //   console.log("Load success: ", stocks);
+      //   console.log("Load success: ", shares);
       var toNotify = client ? new Array(client) : router.clients;
       toNotify.forEach(function(socket) {
-        socket.emit("refresh", stocks);
+        socket.emit("refresh", shares);
       });
     });
 };

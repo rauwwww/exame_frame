@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Share } from '../models/share';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
 import * as io from 'socket.io-client';
 
 import 'rxjs/add/operator/map';
@@ -14,7 +13,7 @@ export class ShareService {
     // API End points
     private getshareUrl = 'share/get';
     private postShareUrl = 'share/post';
-    private postPriceUrl = 'share/sharePost';
+    private postRateUrl = 'share/sharePost';
     private deleteshareUrl = 'share/delete';
 
     private socket;
@@ -57,15 +56,15 @@ export class ShareService {
     /*
      * Send rate to server
      */
-    addPrice(id, price): Observable<Share> {
+    addRate(id, rate): Observable<Share> {
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });
-        const priceData = {
+        const rateData = {
             id: id,
-            price: price,
+            rate: rate,
             date: Date.now()
         };
-        return this.http.post(this.postPriceUrl, priceData, options)
+        return this.http.post(this.postRateUrl, rateData, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

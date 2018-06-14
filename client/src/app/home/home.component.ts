@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ShareService } from '../shares/shares.service';
-import { Observable } from 'rxjs/Observable';
-import { tap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
 
 @Component({
     selector: 'app-home',
@@ -15,7 +12,11 @@ import { of } from 'rxjs/observable/of';
 
 export class HomeComponent implements OnInit {
   enabledComments = [];
-  public stockList = [];
+  public shareList = [];
+
+  loginData = { username: '', password: '' };
+  message = '';
+  data: any;
 
 constructor(
   private http: HttpClient,
@@ -23,15 +24,11 @@ constructor(
   private shareService: ShareService,
   ) {}
 
-  loginData = { username:'', password:'' };
-  message = '';
-  data: any;
-
 login() {
     this.http.post('/users/signin', this.loginData).subscribe(resp => {
       this.data = resp;
       localStorage.setItem('jwtToken', this.data.token);
-      console.log("you are logged in");
+      console.log('You are logged in');
       this.router.navigate(['shares']);
     }, err => {
       this.message = err.error.msg;
@@ -42,10 +39,10 @@ login() {
     console.log('Subscribe to service');
     this.shareService.getShares()
       .subscribe(
-        messages => {
-          // console.log("Messages:",messages);
-          this.stockList = messages;
-          console.log(messages);
+        shares => {
+          // console.log("Messages:",shares);
+          this.shareList = shares;
+          console.log(shares);
         });
   }
 

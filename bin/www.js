@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 
-/**
+/*
  * Module dependencies.
  */
-
 var debug = require('debug')('MEAN2:server');
 var express = require('express');
 var app = express();
 var http = require('http');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -22,24 +20,19 @@ var passConf = require('../config/passport');
 var users = require('../routes/users');
 var share = require('../routes/share');
 
-
 // view engine setup
 
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
-
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 
-//app.use('/blog', blog);
 app.use('/users', users);
 app.use('/share', share);
-
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -67,25 +60,21 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-
-/**
+/*
  * Get port from environment and store in Express.
  */
-
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-/**
+/*
  * Create HTTP server.
  */
-
 var server = http.createServer(app);
 var io = socketio(server);
 
-/**
+/*
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 io.on('connection', function (socket) {
@@ -95,10 +84,9 @@ io.on('connection', function (socket) {
 });
 server.on('listening', onListening);
 
-/**
+/*
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
     var port = parseInt(val, 10);
 
@@ -115,10 +103,9 @@ function normalizePort(val) {
     return false;
 }
 
-/**
+/*
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
@@ -143,10 +130,9 @@ function onError(error) {
     }
 }
 
-/**
+/*
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
     var addr = server.address();
     var bind = typeof addr === 'string'
