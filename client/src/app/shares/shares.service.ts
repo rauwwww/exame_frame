@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Share } from '../models/share';
-import { Observable }     from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import * as io from 'socket.io-client';
 
@@ -10,19 +10,24 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ShareService {
-    private getshareUrl = 'share/get';  // URL to web API
-    private postShareUrl = 'share/post';  // URL to web API
+
+    // API End points
+    private getshareUrl = 'share/get';
+    private postShareUrl = 'share/post';
     private postPriceUrl = 'share/sharePost';
     private deleteshareUrl = 'share/delete';
-    constructor (private http: Http) {}
+
     private socket;
     private url = window.location.origin;
+
+    constructor (private http: Http) {}
+
 
     /*
      * Get blog messages from server
      */
     getShares (): Observable<Share[]> {
-        let observable = new Observable(observer => {
+        const observable = new Observable(observer => {
             console.log('Socket:', this.url);
             this.socket = io(this.url);
             this.socket.on('refresh', (data) => {
@@ -41,8 +46,8 @@ export class ShareService {
      * Send blog message to server
      */
     addShare (share: Share): Observable<Share> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const options = new RequestOptions({ headers: headers });
 
         return this.http.post(this.postShareUrl, share, options)
             .map(this.extractData)
@@ -53,8 +58,8 @@ export class ShareService {
      * Send rate to server
      */
     addPrice(id, price): Observable<Share> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const options = new RequestOptions({ headers: headers });
         const priceData = {
             id: id,
             price: price,
@@ -70,7 +75,7 @@ export class ShareService {
      */
     removeShare(id): Observable<Share> {
         const headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+        const options = new RequestOptions({ headers: headers });
         const shareId = {
             id: id
         };
@@ -83,8 +88,8 @@ export class ShareService {
      * Data handlers
      */
     private extractData(res: Response) {
-        let body = res.json();
-        //console.log(body);
+        const body = res.json();
+        // console.log(body);
         return body || { };
     }
     private handleError (error: Response | any) {
@@ -97,7 +102,7 @@ export class ShareService {
         } else {
             errMsg = error.message ? error.message : error.toString();
         }
-        //console.log(errMsg);
+        // console.log(errMsg);
         return Observable.throw(errMsg);
     }
 }

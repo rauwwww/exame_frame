@@ -26,21 +26,21 @@ describe('Trading App', () => {
   });
 
   it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(SharesComponent);
-    let app = fixture.debugElement.componentInstance;
+    const fixture = TestBed.createComponent(SharesComponent);
+    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
   it(`should have as title 'Trading App'`, async(() => {
-    let fixture = TestBed.createComponent(SharesComponent);
-    let app = fixture.debugElement.componentInstance;
+    const fixture = TestBed.createComponent(SharesComponent);
+    const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Trading App');
   }));
 
   it('should render title in a h1 tag', async(() => {
-    let fixture = TestBed.createComponent(SharesComponent);
+    const fixture = TestBed.createComponent(SharesComponent);
     fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
+    const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('All Stocks!');
   }));
 });

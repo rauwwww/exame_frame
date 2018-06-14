@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Share, ShareRate } from '../models/share';
 import { ShareService } from './shares.service';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,6 @@ export class SharesComponent implements OnInit {
 
   isSubmitted = false;
   title = 'Trading App';
-  //model = new Blog('', '');
   public ShareName = [];
   SharePrice = new ShareRate('', '');
   model = new Share('', new Array<ShareRate>());
