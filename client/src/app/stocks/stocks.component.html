@@ -9,12 +9,6 @@
             required
             [(ngModel)]="model.name" name="name">
     </div>
-   <!--<div class="form-group">
-    <label for="body">Body</label>
-    <input type="text" class="form-control" id="body"
-            required
-            [(ngModel)]="model.body" name="body">
-    </div> -->
     <button ng-click="submitStock()" type="submit" class="btn btn-large btn-block btn-info">Add stock</button>
 </form>
 
@@ -30,16 +24,6 @@
                 <h2 class="li-header"> {{ message.name }} </h2>
             </div>
             <div class="col-sm-2 col-sm-offset-4" style="margin-top:25px">
-
-                <!-- <div *ngIf="newPrice.indexOf(message._id)">
-                    <form [formGroup]="priceFrom">
-                        <input type="text" class="form-control" formControlName="price">
-                        <button [disabled]="!priceForm.valid" type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="postPrice(message._id)">Add Price</button>
-                    </form>
-
-                    
-                </div> -->
-
                 <div *ngIf="newPrice.indexOf(message._id)">
                         <form [formGroup]="priceForm">
                             <input type="text" class="form-control" formControlName="price">
@@ -47,7 +31,6 @@
                             <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="removeStock(message._id)">Remove Stock</button>
                         </form>
                 </div>
-
             </div>
         </div>
         <table class="table table-striped">
