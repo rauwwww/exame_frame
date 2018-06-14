@@ -19,12 +19,7 @@ router.get('/get', function(req, res, next) {
 router.post("/post", (req, res) => {
     var data = new schema.Stock();
     data.name = req.body.name;
-    /** Example post body:
-     {
-       "author": "Morten Mathiasen",
-       "body": "Hello everyone"
-     }
-     **/
+
     schema.Stock.find({}).sort({_id:-1}).skip(10).exec(function (err, stocks) {
         console.log("Hallo 2");
         if (err)

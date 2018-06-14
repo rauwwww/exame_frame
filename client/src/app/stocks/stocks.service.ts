@@ -20,7 +20,7 @@ export class StockService {
     private url = window.location.origin;
 
     /*
-     * Get blog messages from server
+     * Get stocks messages from server
      */
     getStocks (): Observable<Stock[]> {
         let observable = new Observable(observer => {
@@ -39,7 +39,7 @@ export class StockService {
     }
 
     /*
-     * Send blog message to server
+     * Send Stocks message to server
      */
     addStock (stock: Stock): Observable<Stock> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
