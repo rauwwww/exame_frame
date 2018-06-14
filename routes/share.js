@@ -21,7 +21,7 @@ router.post("/post", (req, res) => {
   } else {
     data.save(function(err, data) {
       if (err) {
-        res.json({ success: false, message: "Something went wrong duh", error: err });
+        res.json({ success: false, message: "Something went wrong", error: err });
       } else {
         res.send(data);
         router.notifyclients();
@@ -44,7 +44,7 @@ router.post("/sharePost", (req, res) => {
         { $push: { shareRate: { $each: [data], $position: 0 } } },
         function(err, data) {
           if (err) {
-            res.json({ success: false, message: "Something went wrong duh" });
+            res.json({ success: false, message: "Something went wrong" });
           } else {
             res.json({ success: true, message: "Rate saved" });
             router.notifyclients();
@@ -84,7 +84,6 @@ router.notifyclients = function(client) {
     .sort({ _id: -1 })
     .exec(function(err, shares) {
       if (err) return console.error(err);
-      //   console.log("Load success: ", shares);
       var toNotify = client ? new Array(client) : router.clients;
       toNotify.forEach(function(socket) {
         socket.emit("refresh", shares);

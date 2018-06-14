@@ -52,7 +52,7 @@
                             <th>Time</th>
                         </tr>
                     </thead>
-                    <tbody class="" *ngFor="let rate of share.shareRate">
+                    <tbody *ngFor="let rate of share.shareRate">
                         <tr *ngIf="rate?.rate">
                             <td style="width:40%">{{rate.rate}} $</td>
                             <td>{{rate.date | date:'yyyy-MM-dd HH:mm:ss' }}</td>

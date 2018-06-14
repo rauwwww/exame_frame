@@ -6,7 +6,7 @@
 1. Install NodeJS (https://nodejs.org)
 2. Install Angular CLI (https://cli.angular.io)
 3. Install Mongo (https://www.mongodb.com)
-4. (For Express testing) Install Mocha (https://mochajs.org/)
+4. (For Express tests) Install Mocha (https://mochajs.org/)
 
 ## Get the software
 1. Clone this project
@@ -15,7 +15,7 @@
 4. Execute: npm install
 
 ## Start database
-1. Start mongo daemon, learn how on (https://docs.mongodb.com/manual/administration/install-community/)
+1. Start mongo daemon
 
 ## Run
 1. Execute: npm run build
