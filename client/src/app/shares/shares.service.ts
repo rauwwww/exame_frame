@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Stock, StockPrice } from '../models/stock';
+import { Share } from '../models/share';
 import { Observable }     from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import * as io from 'socket.io-client';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { ObserveOnMessage } from 'rxjs/operators/observeOn';
 
 @Injectable()
-export class StockService {
-    private getStockUrl = 'stock/get';  // URL to web API
-    private postStockUrl = 'stock/post';  // URL to web API
-    private postPriceUrl = 'stock/stockPost';
-    private deleteStockUrl = 'stock/delete';
+export class ShareService {
+    private getshareUrl = 'share/get';  // URL to web API
+    private postShareUrl = 'share/post';  // URL to web API
+    private postPriceUrl = 'share/sharePost';
+    private deleteshareUrl = 'share/delete';
     constructor (private http: Http) {}
     private socket;
     private url = window.location.origin;
@@ -22,7 +21,7 @@ export class StockService {
     /*
      * Get blog messages from server
      */
-    getStocks (): Observable<Stock[]> {
+    getShares (): Observable<Share[]> {
         let observable = new Observable(observer => {
             console.log('Socket:', this.url);
             this.socket = io(this.url);
@@ -41,15 +40,19 @@ export class StockService {
     /*
      * Send blog message to server
      */
-    addStock (stock: Stock): Observable<Stock> {
+    addShare (share: Share): Observable<Share> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.postStockUrl, stock, options)
+        return this.http.post(this.postShareUrl, share, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
-    addPrice(id, price): Observable<Stock> {
+
+    /*
+     * Send rate to server
+     */
+    addPrice(id, price): Observable<Share> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         const priceData = {
@@ -61,13 +64,17 @@ export class StockService {
             .map(this.extractData)
             .catch(this.handleError);
     }
-    removeStock(id): Observable<Stock> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
+
+    /*
+     * Remove rate from server
+     */
+    removeShare(id): Observable<Share> {
+        const headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        const stockId = {
+        const shareId = {
             id: id
         };
-        return this.http.post(this.deleteStockUrl, stockId, options)
+        return this.http.post(this.deleteshareUrl, shareId, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

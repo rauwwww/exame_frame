@@ -1,12 +1,12 @@
-export class StockPrice {
+export class ShareRate {
     constructor(
         public price: string,
         public date: string,
     ) { }
 }
-export class Stock {
+export class Share {
     constructor(
       public name: string,
-      public stockprices: StockPrice[],
+      public sharerates: ShareRate[],
     ) { }
 }

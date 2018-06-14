@@ -44,7 +44,7 @@ router.post("/post", (req, res) => {
   }
 });
 
-router.post("/stockPost", (req, res) => {
+router.post("/sharePost", (req, res) => {
   var data = new schema.StockPrice(req.body);
 
   if (!req.body.price) {

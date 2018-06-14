@@ -36,28 +36,28 @@
                 <table class="table table-responsive">
                     <thead>
                         <tr>
-                            <th>Stock Name</th>
-                            <th>Price</th>
+                            <th>Share Name</th>
+                            <th>Rate</th>
                             <th class="text-center">Last Updated</th>
                             <th class="text-center">See history</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let message of stockList">
-                            <td>{{ message.name }}</td>
-                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice | slice:0:1;  let i=index">
+                        <tr *ngFor="let share of stockList">
+                            <td>{{ share.name }}</td>
+                            <td class="text-center" *ngFor="let stockPrice of share.stockPrice | slice:0:1;  let i=index">
                                 <p *ngIf="i<1">{{ stockPrice.price }} $</p>
-                                <p *ngIf="message.stockPrice.length < -1">No updated Prices yet!</p>
+                                <p *ngIf="share.stockPrice.length < -1">No updated Prices yet!</p>
                             </td>
-                            <td class="text-center" *ngFor="let stockPrice of message.stockPrice | slice:0:1;  let i=index">
+                            <td class="text-center" *ngFor="let stockPrice of share.stockPrice | slice:0:1;  let i=index">
                                 <p *ngIf="i<1">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
                             </td>
-                            <td class="text-center" *ngIf="message.stockPrice.length < 1">No updated time yet!</td>
-                            <td class="text-center" *ngIf="message.stockPrice.length < 1">No updated Prices yet!</td>
+                            <td class="text-center" *ngIf="share.stockPrice.length < 1">No updated time yet!</td>
+                            <td class="text-center" *ngIf="share.stockPrice.length < 1">No updated Prices yet!</td>
                             <td class="text-center">
 
                                 <!-- Show Comments -->
-                                <div *ngIf="enabledComments.indexOf(message._id) > -1">
+                                <div *ngIf="enabledComments.indexOf(share._id) > -1">
                                     <div id="myModal" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
@@ -65,7 +65,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">{{ message.name}}</h4>
+                                                    <h4 class="modal-title">{{ share.name}}</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <table class="table table-responsive">
@@ -75,7 +75,7 @@
                                                                 <th class="text-center">Last Updated</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let stockPrice of message.stockPrice">
+                                                        <tbody *ngFor="let stockPrice of share.stockPrice">
                                                             <tr>
                                                                 <td class="text-center">{{ stockPrice.price }} $</td>
                                                                 <td class="text-center">{{ stockPrice.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
@@ -85,7 +85,7 @@
                                                     </table>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button class="btn btn-info btn-lg" (click)="collapse(message._id)" data-dismiss="modal">Hide</button>
+                                                    <button class="btn btn-info btn-lg" (click)="collapse(share._id)" data-dismiss="modal">Hide</button>
                                                 </div>
                                             </div>
 
@@ -94,8 +94,8 @@
                                 </div>
 
                                 <!-- Hide Comments -->
-                                <div *ngIf="enabledComments.indexOf(message._id)   === -1  ">
-                                    <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" (click)="expand(message._id)">Show</button>
+                                <div *ngIf="enabledComments.indexOf(share._id)   === -1  ">
+                                    <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" (click)="expand(share._id)">Show</button>
                                 </div>
                             </td>
                         </tr>
@@ -114,11 +114,11 @@
                     <h3>Admin singup and login</h3>
                 </div>
                 <form class="form-signin" (ngSubmit)="login()" #loginForm="ngForm">
-                    <div class="alert alert-warning alert-dismissible" role="alert" *ngIf="message !== ''">
+                    <div class="alert alert-warning alert-dismissible" role="alert" *ngIf="share !== ''">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        {{message}}
+                        {{share}}
                     </div>
                     <div class="input-group">
                         <label for="inputEmail" class="sr-only">Email address</label>

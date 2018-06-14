@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Stock, StockPrice } from '../models/stock';
-import { StockService } from './stocks.service';
+import { Share, ShareRate } from '../models/share';
+import { ShareService } from './shares.service';
 import { Router } from "@angular/router";
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-stocks',
-  templateUrl: './stocks.component.html',
-  styleUrls: ['./stocks.component.css'],
-  providers: [StockService]
+  selector: 'app-shares',
+  templateUrl: './shares.component.html',
+  styleUrls: ['./shares.component.css'],
+  providers: [ShareService]
 })
-export class StocksComponent implements OnInit {
+export class SharesComponent implements OnInit {
 
   isSubmitted = false;
   title = 'Trading App';
   //model = new Blog('', '');
-  public stockName = [];
-  stockPrice = new StockPrice('', '');
-  model = new Stock('', new Array<StockPrice>());
-  public stockList = [];
+  public ShareName = [];
+  SharePrice = new ShareRate('', '');
+  model = new Share('', new Array<ShareRate>());
+  public shareList = [];
   priceForm;
   newPrice = [];
 
   constructor (
-    private stockService: StockService,
+    private shareService: ShareService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -45,49 +45,49 @@ export class StocksComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  submitStock() {
-    this.stockService.addStock(this.model)
+  submitShare() {
+    this.shareService.addShare(this.model)
       .subscribe(
         stogMsg => {
-          // console.log("Messages:", messages);
+          // console.log("shares:", shares);
           this.model = stogMsg;
           // this.getBlogs();
         },
-        error =>  console.log(error, 'error while submitting stock')
+        error =>  console.log(error, 'error while submitting Share')
       );
   }
   submitPrice(id) {
     const price = this.priceForm.get('price').value;
-    this.stockService.addPrice(id, price)
+    this.shareService.addPrice(id, price)
     .subscribe(data => {
       const index = this.newPrice.indexOf(id); // Get the index of the blog id to remove from array
       this.newPrice.splice(index, 1); // Remove id from the array
     },
-    error =>  console.log(error, 'error while submitting stock')
+    error =>  console.log(error, 'error while submitting Share')
     );
   }
-  removeStock(id) {
-    this.stockService.removeStock(id)
+  removeShare(id) {
+    this.shareService.removeShare(id)
     .subscribe(data => {},
-    error => console.log(error, 'error while deleting stock')
+    error => console.log(error, 'error while deleting Share')
     );
   }
 
-  getStocks() {
+  getShares() {
     console.log('Subscribe to service');
-    this.stockService.getStocks()
+    this.shareService.getShares()
       .subscribe(
-        messages => {
-          // console.log("Messages:",messages);
-          this.stockList = messages;
-          console.log(messages);
+        shares => {
+          // console.log("Shares:",shares);
+          this.shareList = shares;
+          console.log(shares);
         });
   }
 
   ngOnInit() {
     // checks if user is loggedin and has token
     if (localStorage.getItem('jwtToken') != null) {
-      this.getStocks();
+      this.getShares();
       console.log('localtoken:', localStorage.getItem('jwtToken'));
     } else {
       this.router.navigate(['login']);

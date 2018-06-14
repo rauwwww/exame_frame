@@ -5,20 +5,19 @@ import { HttpModule } from '@angular/http';
 
 // App components init
 import { AppComponent } from './app.component';
-import { StockComponent } from './stock/stock.component';
-import { StocksComponent } from './stocks/stocks.component';
+import { SharesComponent } from './shares/shares.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './404/pageNotFound.component';
 import { SignupComponent } from './signup/signup.component';
 // Angular Http for REST API
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 // Angular Routing
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   {
-    path: 'stocks',
-    component: StocksComponent,
+    path: 'shares',
+    component: SharesComponent,
     data: { title: 'Stock List' }
   },
   {
@@ -51,8 +50,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    StockComponent,
-    StocksComponent,
+    SharesComponent,
     HomeComponent,
     SignupComponent,
     PageNotFoundComponent,

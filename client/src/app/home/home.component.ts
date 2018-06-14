@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { StockService } from '../stocks/stocks.service';
+import { ShareService } from '../shares/shares.service';
 import { Observable } from 'rxjs/Observable';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -10,7 +10,7 @@ import { of } from 'rxjs/observable/of';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
-    providers: [StockService],
+    providers: [ShareService],
   })
 
 export class HomeComponent implements OnInit {
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 constructor(
   private http: HttpClient,
   private router: Router,
-  private stockService: StockService,
+  private shareService: ShareService,
   ) {}
 
   loginData = { username:'', password:'' };
@@ -28,19 +28,19 @@ constructor(
   data: any;
 
 login() {
-    this.http.post('/users/signin',this.loginData).subscribe(resp => {
+    this.http.post('/users/signin', this.loginData).subscribe(resp => {
       this.data = resp;
       localStorage.setItem('jwtToken', this.data.token);
       console.log("you are logged in");
-      this.router.navigate(['stocks']);
+      this.router.navigate(['shares']);
     }, err => {
       this.message = err.error.msg;
     });
   }
 
-  getStocks() {
+  getShares() {
     console.log('Subscribe to service');
-    this.stockService.getStocks()
+    this.shareService.getShares()
       .subscribe(
         messages => {
           // console.log("Messages:",messages);
@@ -63,6 +63,6 @@ login() {
 
   ngOnInit() {
     // checks if user is loggedin and has token
-      this.getStocks();
+      this.getShares();
   }
 }

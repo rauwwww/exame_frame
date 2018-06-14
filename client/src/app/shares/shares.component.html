@@ -1,10 +1,10 @@
 
 
 
-<h2>Create new stock message</h2> <button class="btn btn-success" (click)="logout()">Logout</button>
-<form (ngSubmit)="submitStock()">
+<h2>Add a new Share</h2> <button class="btn btn-success" (click)="logout()">Logout</button>
+<form (ngSubmit)="submitShare()">
     <div class="form-group">
-    <label for="name">StockName</label>
+    <label for="name">ShareName</label>
     <input type="text"  class="form-control" id="name"
             required
             [(ngModel)]="model.name" name="name">
@@ -15,36 +15,36 @@
             required
             [(ngModel)]="model.body" name="body">
     </div> -->
-    <button ng-click="submitStock()" type="submit" class="btn btn-large btn-block btn-info">Add stock</button>
+    <button ng-click="submitShare()" type="submit" class="btn btn-large btn-block btn-info">Add Share</button>
 </form>
 
 <hr>
 
-    <h1>All Stocks!</h1>
+    <h1>All Shares!</h1>
 
     <div class="row">
-    <div class="panel panel-default col-sm-12"  *ngFor="let message of stockList">
+    <div class="panel panel-default col-sm-12"  *ngFor="let share of shareList">
  
         <div class="row">
             <div class="col-sm-6">
-                <h2 class="li-header"> {{ message.name }} </h2>
+                <h2 class="li-header"> {{ share.name }} </h2>
             </div>
             <div class="col-sm-2 col-sm-offset-4" style="margin-top:25px">
 
-                <!-- <div *ngIf="newPrice.indexOf(message._id)">
+                <!-- <div *ngIf="newPrice.indexOf(share._id)">
                     <form [formGroup]="priceFrom">
                         <input type="text" class="form-control" formControlName="price">
-                        <button [disabled]="!priceForm.valid" type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="postPrice(message._id)">Add Price</button>
+                        <button [disabled]="!priceForm.valid" type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="postPrice(share._id)">Add Price</button>
                     </form>
 
                     
                 </div> -->
 
-                <div *ngIf="newPrice.indexOf(message._id)">
+                <div *ngIf="newPrice.indexOf(share._id)">
                         <form [formGroup]="priceForm">
                             <input type="text" class="form-control" formControlName="price">
-                            <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="submitPrice(message._id)">Add Price</button>
-                            <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="removeStock(message._id)">Remove Stock</button>
+                            <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="submitPrice(share._id)">Add Price</button>
+                            <button type="submit" name="button" class="btn btn-block btn-info pull-right" (click)="removeShare(share._id)">Remove Share</button>
                         </form>
                 </div>
 
@@ -53,11 +53,11 @@
         <table class="table table-striped">
                 <thead>
                         <tr>
-                          <th>Price</th>
+                          <th>Rate</th>
                           <th>Time</th>
                         </tr>
                 </thead>
-                <tbody class="panel-body" *ngFor="let stockPrice of message.stockPrice"> 
+                <tbody class="panel-body" *ngFor="let stockPrice of share.stockPrice"> 
                         
                         <tr *ngIf="stockPrice?.price">
                             <td>{{stockPrice.price}} $</td>

@@ -20,7 +20,7 @@ var passConf = require('../config/passport');
 
 // API routes
 var users = require('../routes/users');
-var stock = require('../routes/stock');
+var share = require('../routes/share');
 
 
 // view engine setup
@@ -38,14 +38,14 @@ app.use(passport.initialize());
 
 //app.use('/blog', blog);
 app.use('/users', users);
-app.use('/stock', stock);
+app.use('/share', share);
 
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-// Ads routing to stocks
-app.use('/stocks', express.static(path.join(__dirname, 'dist')));
+// Ads routing to shares
+app.use('/shares', express.static(path.join(__dirname, 'dist')));
 app.use('/login', express.static(path.join(__dirname, 'dist')));
 app.use('/signup', express.static(path.join(__dirname, 'dist')));
 
@@ -90,8 +90,8 @@ server.listen(port);
 server.on('error', onError);
 io.on('connection', function (socket) {
     console.log("New client connected");
-    stock.addClient(socket);
-    stock.notifyclients();  
+    share.addClient(socket);
+    share.notifyclients();  
 });
 server.on('listening', onListening);
 
