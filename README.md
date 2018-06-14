@@ -30,8 +30,7 @@
 
 ## Automated tests
 1. Express API testing with Mocha and Chai
-- Requires global installation of Mocha
-- "npm install -g mocha@2.3.1"
+- Requires global installation of Mocha (npm install -g mocha@2.3.1)
 - Run tests by prompting 'mocha' in root.
 
 2. Jasmin Angular testing
