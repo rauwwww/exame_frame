@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 
 // App components init
 import { AppComponent } from './app.component';
-import { StockComponent } from './stock/stock.component';
 import { StocksComponent } from './stocks/stocks.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './404/pageNotFound.component';
@@ -51,7 +50,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    StockComponent,
     StocksComponent,
     HomeComponent,
     SignupComponent,

@@ -16,13 +16,12 @@ import { of } from 'rxjs/observable/of';
 export class HomeComponent implements OnInit {
   enabledComments = [];
   public stockList = [];
-  
 constructor(
   private http: HttpClient,
   private router: Router,
   private stockService: StockService,
   )
-  { }
+  {}
 
   loginData = { username:'', password:'' };
   message = '';
