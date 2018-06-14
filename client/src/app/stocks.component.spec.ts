@@ -1,12 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { SharesComponent } from './shares/shares.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { FormBuilder, Validators } from '@angular/forms';
 // Angular Routing
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppModule } from './app.module';
 
 describe('Trading-App', () => {
@@ -41,6 +38,6 @@ describe('Trading-App', () => {
     const fixture = TestBed.createComponent(SharesComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('All Stocks!');
+    expect(compiled.querySelector('h1').textContent).toContain('All Shares!');
   }));
 });

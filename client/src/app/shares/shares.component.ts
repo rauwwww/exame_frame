@@ -38,12 +38,10 @@ export class SharesComponent implements OnInit {
       ])]
     });
   }
-
   logout() {
     localStorage.removeItem('jwtToken');
     this.router.navigate(['home']);
   }
-
   submitShare() {
     this.shareService.addShare(this.model)
       .subscribe(
@@ -71,7 +69,6 @@ export class SharesComponent implements OnInit {
     error => console.log(error, 'error while deleting Share')
     );
   }
-
   getShares() {
     console.log('Subscribe to service');
     this.shareService.getShares()
