@@ -9,10 +9,9 @@
 4. (For Express tests) Install Mocha (https://mochajs.org/)
 
 ## Get the software
-1. Clone this project
-2. Open root folder in terminal
-3. Execute: npm run prepare
-4. Execute: npm install
+1. Open root folder in terminal
+2. Execute: npm run prepare
+3. Execute: npm install
 
 ## Start database
 1. Start mongo daemon
@@ -31,7 +30,7 @@
 ## Automated tests
 1. Express API testing with Mocha and Chai
 - Requires global installation of Mocha (npm install -g mocha@2.3.1)
-- Run tests by prompting 'mocha' in root.
+- Execute 'mocha' in root folder.
 
 2. Jasmin Angular testing
-- Prompt 'ng test' when in client folder.
+- Execute 'ng test' when in client folder.
