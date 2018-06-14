@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var schema = require("../model/schema");
 
-/* GET all Shares */
+/* GET all shares */
 router.get("/get", function(req, res, next) {
   schema.Share.find({}).exec(function(err, shares) {
     if (err) return console.error(err);
@@ -30,9 +30,9 @@ router.post("/post", (req, res) => {
   }
 });
 
+/* Post a rate to a share */
 router.post("/sharePost", (req, res) => {
   var data = new schema.ShareRate(req.body);
-
   if (!req.body.rate) {
     res.json({ success: false, message: "No rate provided" });
   } else {

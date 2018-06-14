@@ -9,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AppModule } from './app.module';
 
-describe('Trading App', () => {
+describe('Trading-App', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
         imports: [

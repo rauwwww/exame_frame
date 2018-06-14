@@ -3,7 +3,7 @@
 /*
  * Module dependencies.
  */
-var debug = require('debug')('MEAN2:server');
+var debug = require('debug')('Trading-App:server');
 var express = require('express');
 var app = express();
 var http = require('http');
@@ -21,10 +21,9 @@ var users = require('../routes/users');
 var share = require('../routes/share');
 
 // view engine setup
-
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
-// uncomment after placing your favicon in /public
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
