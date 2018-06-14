@@ -5,9 +5,13 @@ This template project for building MEAN applications is based on Mongoose, Expre
 Below instructions explain how to get started using this template, either with or without live updates as source files changes.
 
 ## Mocha, chai testing
-Requires global installation of Mocha
-npm install -g mocha@2.3.1
-Run tests by writing 'mocha' in root.
+1. Backend:
+2. Requires global installation of Mocha npm install -g mocha@2.3.1
+3. Run tests by writing 'mocha' in root.
+
+4. Frontend:
+6. Go to client Folder
+5. Run test by writing ng-test
 
 ## Install prerequisities
 1. Install NodeJS (https://nodejs.org)

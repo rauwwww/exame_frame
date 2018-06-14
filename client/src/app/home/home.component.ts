@@ -6,9 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
-
-
-
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',

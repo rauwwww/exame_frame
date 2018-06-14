@@ -66,7 +66,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { useHash: true, enableTracing: true }, // tracing for debugging, usehash for hash urls should be html5 urls eventually
-    ),
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
