@@ -40,11 +40,10 @@ app.use(passport.initialize());
 app.use('/users', users);
 app.use('/stock', stock);
 
-
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-// Ads routing to stocks
+// Ads routing to stocks Not used currently in solution as using hashurls instead, but implement for HTML5 
 app.use('/stocks', express.static(path.join(__dirname, 'dist')));
 app.use('/login', express.static(path.join(__dirname, 'dist')));
 app.use('/signup', express.static(path.join(__dirname, 'dist')));
