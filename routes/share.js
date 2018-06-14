@@ -17,7 +17,7 @@ router.post("/post", (req, res) => {
   data.name = req.body.name;
 
   if (!req.body.name) {
-    res.json({ success: false, message: "No stockname provided" });
+    res.json({ success: false, message: "No sharename provided" });
   } else {
     data.save(function(err, data) {
       if (err) {

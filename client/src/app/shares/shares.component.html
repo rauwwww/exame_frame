@@ -13,7 +13,7 @@
             <h2>Add a new share</h2>
             <form (ngSubmit)="submitShare()">
                 <div class="form-group">
-                    <label for="name">ShareName</label>
+                    <label for="name">Share Name</label>
                     <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" placeholder="Enter Share Name here">
                 </div>
                 <button ng-click="submitShare()" type="submit" class="btn btn-success">Add Share</button>
@@ -54,7 +54,7 @@
             <br />
             <hr>
 
-            <div class="table-responsive" style="margin-top: 20px">
+            <div class="table-responsive" style="margin-top: 20px; padding-bottom:15px;">
                 <table class="table table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
