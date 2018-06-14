@@ -93,6 +93,154 @@ body {
       right: -72px;
   }
 
-  .clightblue {
-    background-color:#5bc0de !important;
+  .cgreen {
+    background-color:#5cb85c !important;
   }
+
+  @import url(http://fonts.googleapis.com/css?family=Roboto:400);
+body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px Roboto,arial,sans-serif;
+}
+
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+
+
+/* Header settings */
+header {
+  height:600px; /* you can change that height to 100%, please get sure youre Header is ready */
+  background-attachment:fixed;
+  background-size:cover;
+  z-index:-1;
+  background-position:left;
+  background-repeat:no-repeat;
+  background-image:linear-gradient(to right, black 0%, white 100%), url('https://static.pexels.com/photos/225600/pexels-photo-225600.jpeg');
+  background-blend-mode:screen; /* you can remove that, if you do that delet the "linear-gradient(to right, black 0%, white 100%)," */
+}
+
+@media (max-width:767px){
+  header {
+  background-attachment:inherit;
+}
+}
+
+header .row
+{
+    margin-top:40vh; /* Handle the row */
+}
+
+@media (max-width:767px){
+    header .row
+{
+    margin-top:30vh; /* Handle the row on mobile */
+}
+}
+
+header h1
+{
+    font-family: 'Arbutus', cursive;
+    text-align:center;
+    font-size:61px;
+    color:#F8CA4D;
+    text-shadow:0px 0px 4px #222;
+}
+
+@media (max-width:767px){
+    header h1
+{
+    font-size:41px;
+}
+}
+
+header p
+{
+    text-align:center;
+    font-size:21px;
+}
+
+header .btn-link
+{
+    border:1px solid #2F3440;
+    margin-top:20px;
+    font-size:21px;
+    letter-spacing:1px;
+    color:#2F3440;
+    text-shadow:0px 0px 1px #222;
+    box-shadow:0px 0px 1px #000;
+}
+
+header .btn-link:hover
+{
+    text-decoration:none;
+    color:#eee;
+    border:1px solid #eee;
+    transition:all 0.7s;
+    text-shadow:0px 0px 3px #000;
+}
+
+
+/* Custom navbar settings */
+.navbar-default {
+  background-color:#3F5666;
+  border-color:#2F3440;
+  border-bottom:1px solidÂ #00c9c0;
+  border-radius:0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color:#fff;
+  letter-spacing:1px;
+  font-weight:500;
+}
+
+.navbar-default .navbar-brand {
+  color:#ffffff;
+  letter-spacing:1px;
+}
+
+.navbar-default .navbar-brand:hover {
+  color:#eee;
+  transition:all 0.7s;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color:#eee;
+  background-color:#2F3440;
+  transition:all 0.7s;
+  font-size:21px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color:#eee;
+  background-color:#2F3440;
+  transition:all 0.7s;
+  font-size:15px;
+}
