@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -9,37 +9,36 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AppModule } from './app.module';
 import { HomeComponent } from './home/home.component';
+import { StockService } from './stocks/stocks.service';
 
-describe('Trading App', () => {
-  beforeEach(() => {
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
+
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-            HttpModule,
-            RouterModule,
-            AppModule
-        ],
-        declarations: [
-
+      imports: [
+        HttpModule,
+        AppModule
       ],
-    });
+      declarations: []
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(HomeComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+  it('should create app', () => {
+    expect(component).toBeDefined();
+  });
 
-  it(`should have as title 'Home'`, async(() => {
-    let fixture = TestBed.createComponent(HomeComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Home');
-  }));
+  it('Should check if page contains "Stock Market"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    expect(bannerElement.textContent).toContain('Stock Market');
+  });
 
-  it('should render title in a h4 tag', async(() => {
-    let fixture = TestBed.createComponent(HomeComponent);
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toContain('FRAMEWORK EXAM');
-  }));
 });

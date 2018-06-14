@@ -16,8 +16,9 @@ router.get('/get', function(req, res, next) {
 });
 
 /* POST single stock  */
-router.post('/post', function(req, res, next) {
-    var instance = new schema.Stock(req.body);
+router.post("/post", (req, res) => {
+    var data = new schema.Stock();
+    data.name = req.body.name;
     /** Example post body:
      {
        "author": "Morten Mathiasen",
@@ -35,7 +36,7 @@ router.post('/post', function(req, res, next) {
         });
     });
 
-    instance.save(function (err, Stock) {
+    data.save(function (err, Stock) {
         result = err?err:Stock;
         res.send(result);
         router.notifyclients();

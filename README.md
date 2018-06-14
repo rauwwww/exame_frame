@@ -9,9 +9,9 @@ Below instructions explain how to get started using this template, either with o
 2. Requires global installation of Mocha npm install -g mocha@2.3.1
 3. Run tests by writing 'mocha' in root.
 
-4. Frontend:
-6. Go to client Folder
-5. Run test by writing ng-test
+1. Frontend(jasmin):
+2. Go to client Folder
+3. Run test by writing ng-test
 
 ## Install prerequisities
 1. Install NodeJS (https://nodejs.org)
