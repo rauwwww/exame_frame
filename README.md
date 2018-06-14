@@ -1,6 +1,6 @@
-# Frameworks Exam: MEAN application
-# Stock Exchange application
-# Made by Søren Ravn Lund
+## Frameworks Exam: MEAN application
+## Stock Exchange application
+## Made by Søren Ravn Lund
 
 ## Install prerequisities
 1. Install NodeJS (https://nodejs.org)
