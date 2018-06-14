@@ -136,13 +136,13 @@ h4 {
 
 /* Header settings */
 header {
-  height:600px; /* you can change that height to 100%, please get sure youre Header is ready */
+  height:400px; /* you can change that height to 100%, please get sure youre Header is ready */
   background-attachment:fixed;
   background-size:cover;
   z-index:-1;
   background-position:left;
   background-repeat:no-repeat;
-  background-image:linear-gradient(to right, black 0%, white 100%), url('https://static.pexels.com/photos/225600/pexels-photo-225600.jpeg');
+  background-image:linear-gradient(to right, black 0%, white 200%), url('https://financialwhirlpool.com/wp-content/uploads/2015/06/maxresdefault.jpg');
   background-blend-mode:screen; /* you can remove that, if you do that delet the "linear-gradient(to right, black 0%, white 100%)," */
 }
 
@@ -154,7 +154,7 @@ header {
 
 header .row
 {
-    margin-top:40vh; /* Handle the row */
+    margin-top:150px; /* Handle the row */
 }
 
 @media (max-width:767px){
@@ -184,63 +184,7 @@ header p
 {
     text-align:center;
     font-size:21px;
-}
-
-header .btn-link
-{
-    border:1px solid #2F3440;
-    margin-top:20px;
-    font-size:21px;
-    letter-spacing:1px;
-    color:#2F3440;
-    text-shadow:0px 0px 1px #222;
-    box-shadow:0px 0px 1px #000;
-}
-
-header .btn-link:hover
-{
-    text-decoration:none;
-    color:#eee;
-    border:1px solid #eee;
-    transition:all 0.7s;
-    text-shadow:0px 0px 3px #000;
+    color: #F8CA4D;
 }
 
 
-/* Custom navbar settings */
-.navbar-default {
-  background-color:#3F5666;
-  border-color:#2F3440;
-  border-bottom:1px solidÂ #00c9c0;
-  border-radius:0px;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color:#fff;
-  letter-spacing:1px;
-  font-weight:500;
-}
-
-.navbar-default .navbar-brand {
-  color:#ffffff;
-  letter-spacing:1px;
-}
-
-.navbar-default .navbar-brand:hover {
-  color:#eee;
-  transition:all 0.7s;
-}
-
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color:#eee;
-  background-color:#2F3440;
-  transition:all 0.7s;
-  font-size:21px;
-}
-
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color:#eee;
-  background-color:#2F3440;
-  transition:all 0.7s;
-  font-size:15px;
-}
